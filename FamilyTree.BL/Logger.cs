@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FamilyTree.BL
 {
-    public class Class1
+    class Logger
     {
     }
 }
