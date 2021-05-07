@@ -1,4 +1,5 @@
 ﻿using System;
+using FamilyTree.DI;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,9 +28,6 @@ namespace FamilyTree.BL
         public int Year { get; private set; } = -1;
 
         public string FullDate { get { return ConvertDateToString(); } }
-        
-
-        public string Infomation { get; set; }
 
 
         public bool Exact { get; set; } = true;
@@ -123,7 +121,6 @@ namespace FamilyTree.BL
         }
 
 
-
         private string ConvertDateToString()
         {
             StringBuilder dateString = new StringBuilder();
@@ -145,6 +142,5 @@ namespace FamilyTree.BL
             else
                 return $"{data}";
         }
-
     }
 }

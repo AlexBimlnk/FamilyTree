@@ -42,11 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Date.cs" />
-    <Compile Include="IDate.cs" />
-    <Compile Include="IPerson.cs" />
+    <Compile Include="Family.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FamilyTree.DI\FamilyTree.DI.csproj">
+      <Project>{888d8d71-3245-4612-9a0a-8bc6b184c1a4}</Project>
+      <Name>FamilyTree.DI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FamilyTree.BL
+namespace FamilyTree.DI
 {
     public interface IDate
     {
@@ -34,12 +34,6 @@ namespace FamilyTree.BL
         /// Возращает дату в виде строки.
         /// </summary>
         string FullDate { get; }
-
-
-        /// <summary>
-        /// Дополнительная информация, связанная с этой датой.
-        /// </summary>
-        string Infomation { get; set; }
 
 
         /// <summary>
