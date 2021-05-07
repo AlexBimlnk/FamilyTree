@@ -25,6 +25,12 @@ namespace FamilyTree.DI
 
 
         /// <summary>
+        /// Путь по которому находятся данные, связанные с человеком.
+        /// </summary>
+        string DataPath { get; set; }
+
+
+        /// <summary>
         /// Дата рождения.
         /// </summary>
         IDate Birth { get; set; }
@@ -36,24 +42,9 @@ namespace FamilyTree.DI
 
 
         /// <summary>
-        /// Мать.
+        /// Семья.
         /// </summary>
-        IPerson Mother { get; set; }
-
-        /// <summary>
-        /// Отец.
-        /// </summary>
-        IPerson Father { get; set; }
-
-        /// <summary>
-        /// Возращает список братьев.
-        /// </summary>
-        List<IPerson> Brothers { get; }
-
-        /// <summary>
-        /// Возвращает список сестер.
-        /// </summary>
-        List<IPerson> Sisters { get; }
+        IFamily Family { get; }
 
 
         /// <summary>

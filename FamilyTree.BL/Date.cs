@@ -82,7 +82,7 @@ namespace FamilyTree.BL
             {
                 if(Month != -1)
                 {
-                    if(dayCountOfMonth[Month-1,0] == day)
+                    if(day <= dayCountOfMonth[Month-1,0])
                     {
                         Day = day;
                         result = true;
@@ -111,7 +111,7 @@ namespace FamilyTree.BL
         {
             result = false;
 
-            if (MintYear <= Year && Year <= MaxYear)
+            if (MintYear <= year && year <= MaxYear)
             {
                 Year = year;
                 result = true;
@@ -123,15 +123,12 @@ namespace FamilyTree.BL
 
         private string ConvertDateToString()
         {
-            StringBuilder dateString = new StringBuilder();
-
-            dateString.Append($"{ConvertDataToString(Day)}.{ConvertDataToString(Month)}.{ConvertDataToString(Year)}");
+            string dateString = $"{ConvertDataToString(Day)}.{ConvertDataToString(Month)}.{ConvertDataToString(Year)}";
 
             if (!Exact)
-                dateString.Append("?");
-            
+                dateString += "?";
 
-            return dateString.ToString();
+            return dateString;
         }
         private string ConvertDataToString(int data)
         {

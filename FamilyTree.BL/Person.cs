@@ -11,9 +11,8 @@ namespace FamilyTree.BL
     {
 
         protected int _age = -1;
-        protected List<IPerson> _brothers = new List<IPerson>();
-        protected List<IPerson> _sisters = new List<IPerson>();
-        
+        protected IFamily family;
+
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Patronymic { get; set; }
@@ -26,12 +25,10 @@ namespace FamilyTree.BL
         public IDate Birth { get; set; }
         public IDate Death { get; set; }
 
+        public string DataPath { get; set; }
 
-        public IPerson Mother { get; set; }
-        public IPerson Father { get; set; }
 
-        public List<IPerson> Brothers => _brothers;
-        public List<IPerson> Sisters => _sisters;
+        public IFamily Family => family;
 
 
         public Person() { }

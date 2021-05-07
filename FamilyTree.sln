@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTree.BL", "FamilyTree
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTree.DI", "FamilyTree.DI\FamilyTree.DI.csproj", "{888D8D71-3245-4612-9A0A-8BC6B184C1A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FamilyTree.Settings", "FamilyTree.Settings\FamilyTree.Settings.csproj", "{FC0EB231-41A9-4246-9509-C5BF402F4DCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{888D8D71-3245-4612-9A0A-8BC6B184C1A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{888D8D71-3245-4612-9A0A-8BC6B184C1A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{888D8D71-3245-4612-9A0A-8BC6B184C1A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0EB231-41A9-4246-9509-C5BF402F4DCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0EB231-41A9-4246-9509-C5BF402F4DCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0EB231-41A9-4246-9509-C5BF402F4DCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0EB231-41A9-4246-9509-C5BF402F4DCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
