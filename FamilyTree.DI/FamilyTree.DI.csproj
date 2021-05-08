@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums.cs" />
     <Compile Include="IDate.cs" />
     <Compile Include="IFamily.cs" />
     <Compile Include="IPerson.cs" />

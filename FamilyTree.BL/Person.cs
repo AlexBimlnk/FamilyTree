@@ -9,7 +9,6 @@ namespace FamilyTree.BL
 {
     public class Person : IPerson
     {
-
         protected int _age = -1;
         protected IFamily family;
 
@@ -21,6 +20,8 @@ namespace FamilyTree.BL
             get { return _age; }
             set { if (value > 0) _age = value; }
         }
+        public Genders Gender { get; set; }
+
 
         public IDate Birth { get; set; }
         public IDate Death { get; set; }
@@ -29,7 +30,6 @@ namespace FamilyTree.BL
 
 
         public IFamily Family => family;
-
 
         public Person() { }
 

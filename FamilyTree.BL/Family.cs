@@ -9,6 +9,10 @@ namespace FamilyTree.BL
 {
     public class Family : IFamily
     {
+        private List<IPerson> _brothers = new List<IPerson>();
+        private List<IPerson> _sisters = new List<IPerson>();
+        private List<IPerson> _children = new List<IPerson>();
+
         public IPerson Mother { get; set; }
         public IPerson Father { get; set; }
         public IPerson MarriagePartner { get; set; }
@@ -18,24 +22,44 @@ namespace FamilyTree.BL
 
         public List<IPerson> GrandParents()
         {
-            throw new NotImplementedException();
+            List<IPerson> grandParents = new List<IPerson>();
+            grandParents.AddRange(GrandMothers());
+            grandParents.AddRange(GrandFathers());
+
+            return grandParents;
         }
         public List<IPerson> GrandFathers()
         {
-            throw new NotImplementedException();
+            List<IPerson> grandFathers = new List<IPerson>();
+            grandFathers.Add(Mother.Family.Father);
+            grandFathers.Add(Father.Family.Father);
+
+            return grandFathers;
         }
         public List<IPerson> GrandMothers()
         {
-            throw new NotImplementedException();
+            List<IPerson> grandMothers = new List<IPerson>();
+            grandMothers.Add(Mother.Family.Mother);
+            grandMothers.Add(Father.Family.Mother);
+
+            return grandMothers;
         }
 
         public List<IPerson> Aunts()
         {
-            throw new NotImplementedException();
+            List<IPerson> aunts = new List<IPerson>();
+            aunts.AddRange(Mother.Family.Sisters());
+            aunts.AddRange(Father.Family.Sisters());
+
+            return aunts;
         }
         public List<IPerson> Uncles()
         {
-            throw new NotImplementedException();
+            List<IPerson> uncles = new List<IPerson>();
+            uncles.AddRange(Mother.Family.Brothers());
+            uncles.AddRange(Father.Family.Brothers());
+
+            return uncles;
         }
 
         #endregion
@@ -45,24 +69,33 @@ namespace FamilyTree.BL
 
         public List<IPerson> Brothers()
         {
-            throw new NotImplementedException();
+            return _brothers;
         }
         public List<IPerson> Sisters()
         {
-            throw new NotImplementedException();
+            return _sisters;
         }
 
         public List<IPerson> Cousins()
         {
-            throw new NotImplementedException();
+            List<IPerson> cousins = new List<IPerson>();
+
+            foreach (var i in Uncles())
+                cousins.AddRange(i.Family.Children());
+
+            foreach (var i in Aunts())
+                cousins.AddRange(i.Family.Children());
+
+
+            return cousins;
         }
         public List<IPerson> CousinsBrothers()
         {
-            throw new NotImplementedException();
+            return RelativesOrderByGender(Cousins(), Genders.Man);
         }
         public List<IPerson> CousinsSisters()
         {
-            throw new NotImplementedException();
+            return RelativesOrderByGender(Cousins(), Genders.Woman);
         }
 
         #endregion
@@ -72,30 +105,74 @@ namespace FamilyTree.BL
 
         public List<IPerson> Children()
         {
-            throw new NotImplementedException();
+            return _children;
         }
         public List<IPerson> Daughters()
         {
-            throw new NotImplementedException();
+            return RelativesOrderByGender(Children(), Genders.Woman);
         }
         public List<IPerson> Sons()
         {
-            throw new NotImplementedException();
+            return RelativesOrderByGender(Children(), Genders.Man);
         }
 
         public List<IPerson> NephewsAndNieces()
         {
-            throw new NotImplementedException();
+            List<IPerson> nephewsAndNieces = new List<IPerson>();
+
+            foreach (var i in Children())
+                nephewsAndNieces.AddRange(i.Family.Children());
+
+            return nephewsAndNieces;
         }
         public List<IPerson> Nephews()
         {
-            throw new NotImplementedException();
+            return RelativesOrderByGender(NephewsAndNieces(), Genders.Man);
         }
         public List<IPerson> Nieces()
         {
-            throw new NotImplementedException();
+            return RelativesOrderByGender(NephewsAndNieces(), Genders.Woman);
         }
 
         #endregion
+
+
+        #region Добавление родственников
+
+        public void AddChild(IPerson child)
+        {
+            _children.Add(child);
+        }
+
+        public void AddBrother(IPerson brother)
+        {
+            _brothers.Add(brother);
+        }
+        public void AddSister(IPerson sister)
+        {
+            _sisters.Add(sister);
+        }
+
+        #endregion
+
+
+        /// <summary>
+        /// Формирует список из заданной коллекции по выбраному полу.
+        /// </summary>
+        /// <param name="collection"> Коллекция из которой выбрать элементы. </param>
+        /// <param name="gender"> Пол, по которому отобрать элементы. </param>
+        /// <returns> Список IPerson, являющийся выборкой по полу.  </returns>
+        private List<IPerson> RelativesOrderByGender(List<IPerson> collection, Genders gender)
+        {
+            List<IPerson> list = new List<IPerson>();
+
+            foreach (var i in collection)
+            {
+                if (i.Gender == gender)
+                    list.Add(i);
+            }
+
+            return list;
+        }
     }
 }

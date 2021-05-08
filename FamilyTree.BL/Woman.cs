@@ -12,23 +12,30 @@ namespace FamilyTree.BL
         /// <summary>
         /// Девичья фамилия.
         /// </summary>
-        public string MaidenName { get; set; }
+        public string MaidenName { get; set; } = "";
 
 
-        public Woman() { }
+        public Woman()
+        {
+            Gender = Genders.Woman;
+        }
 
         public Woman(string name, string maidenName, string lastName, 
                     string patronymic, int age, string dateBirth, string dateDeath) 
             : base (name, lastName, patronymic, age, dateBirth, dateDeath)
         {
+            Gender = Genders.Woman;
+
             MaidenName = maidenName;
         }
 
 
         public override string FullName()
         {
-
-            return $"{LastName} ({MaidenName}) {Name} {Patronymic}";
+            if(MaidenName != "")
+                return $"{LastName} ({MaidenName}) {Name} {Patronymic}";
+            else
+                return $"{LastName} {Name} {Patronymic}";
         }
     }
 }

@@ -23,6 +23,11 @@ namespace FamilyTree.DI
         /// </summary>
         int Age { get; set; }
 
+        /// <summary>
+        /// Гендер.
+        /// </summary>
+        Genders Gender { get; set; }
+
 
         /// <summary>
         /// Путь по которому находятся данные, связанные с человеком.
