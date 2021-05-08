@@ -9,33 +9,42 @@ namespace FamilyTree.BL
 {
     public class Person : IPerson
     {
-        protected int _age = -1;
+        protected int age = -1;
         protected IFamily family;
+        protected IDate birth;
+        protected IDate death;
 
         public string Name { get; set; }
         public string LastName { get; set; }
         public string Patronymic { get; set; }
         public int Age
         {
-            get { return _age; }
-            set { if (value > 0) _age = value; }
+            get { return age; }
+            set { if (value > 0) age = value; }
         }
         public Genders Gender { get; set; }
 
 
-        public IDate Birth { get; set; }
-        public IDate Death { get; set; }
-
-        public string DataPath { get; set; }
+        public IDate Birth => birth;
+        public IDate Death => death;
 
 
         public IFamily Family => family;
 
-        public Person() { }
+
+        public string DataPath { get; set; }
+
+
+        public Person()
+        {
+            CreatePersonDependency();
+        }
 
         public Person(string name, string lastName, string patronymic,
                       int age, string dateBirth, string dateDeath)
         {
+            CreatePersonDependency();
+
             bool result;
 
             Name = name;
@@ -45,13 +54,13 @@ namespace FamilyTree.BL
 
             int[] buffer = Array.ConvertAll(dateBirth.Split('.'), x => int.Parse(x));
 
-            Birth = new Date();
-            Birth.TrySetDate(buffer[0], buffer[1], buffer[2], out result);
+            birth = new Date();
+            birth.TrySetDate(buffer[0], buffer[1], buffer[2], out result);
 
             buffer = Array.ConvertAll(dateDeath.Split('.'), x => int.Parse(x));
 
-            Death = new Date();
-            Death.TrySetDate(buffer[0], buffer[1], buffer[2], out result);
+            death = new Date();
+            death.TrySetDate(buffer[0], buffer[1], buffer[2], out result);
         }
 
 
@@ -63,6 +72,17 @@ namespace FamilyTree.BL
         public string YearsOfLife()
         {
             return $"{Birth.FullDate} - {Death.FullDate}";
+        }
+
+
+        /// <summary>
+        /// Внедрение зависимостей.
+        /// </summary>
+        private void CreatePersonDependency()
+        {
+            DependencyInjector.CreateDependency(out birth);
+            DependencyInjector.CreateDependency(out death);
+            DependencyInjector.CreateDependency(out family);
         }
     }
 }

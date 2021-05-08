@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-namespace FamilyTree.DI
+﻿namespace FamilyTree.DI
 {
     public interface IPerson
     {
@@ -38,12 +37,12 @@ namespace FamilyTree.DI
         /// <summary>
         /// Дата рождения.
         /// </summary>
-        IDate Birth { get; set; }
+        IDate Birth { get; }
 
         /// <summary>
         /// Дата смерти.
         /// </summary>
-        IDate Death { get; set; }
+        IDate Death { get; }
 
 
         /// <summary>

@@ -16,9 +16,15 @@ namespace ConsoleApp
             IPerson person2 = new Woman("Name", "MaidenName", "LastName", "Pat", 12, "12.12.1912", "12.12.1912");
             IPerson person3 = new Man("Name", "LastName", "Pat", 12, "12.12.1912", "12.12.1912");
             IPerson person4 = new Woman();
+
             person4.LastName = "LastName";
             person4.Name = "Name";
             person4.Patronymic = "Pat";
+            person1.Family.Mother = person2;
+            person1.Family.AddChild(person3);
+            person1.Family.AddChild(person4);
+
+            Console.WriteLine($"Children count: {person1.Family.Children().Count}");
 
             Console.WriteLine(person1.Age);
             Console.WriteLine(person2.Age);
