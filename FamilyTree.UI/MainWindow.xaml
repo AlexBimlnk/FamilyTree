@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FamilyTree.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="550" Width="800">
     <Grid>
-        
+        <Viewbox x:Name="viewbox" Margin="0,25,0,0">
+            <local:ViewController x:Name="viewController" Width="300" Height="300">
+                <!--<Label Name="centerLB" Height="50" Width="50" Canvas.Top="125" Canvas.Left="125">
+                    lb1
+                </Label>-->
+            </local:ViewController>
+        </Viewbox>
+        <Menu Height="25" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="New Project" Click="CreateNewProject_Click"></MenuItem>
+                <MenuItem Header="Open Project" >
+                    <MenuItem Header="WinForms"></MenuItem>
+                    <MenuItem Header="WPF" ></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Save" >
+                    <MenuItem Header="Save as project"></MenuItem>
+                    <MenuItem Header="Save as picture" Click="SaveAsPicture_Click"></MenuItem>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" ></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Edit" ></MenuItem>
+            <MenuItem Header="View" ></MenuItem>
+        </Menu>
     </Grid>
 </Window>

@@ -12,5 +12,11 @@ namespace FamilyTree.DI
         Man,
         Woman
     }
-
+    public enum CreateSide
+    {
+        LeftTop,
+        RightTop,
+        LeftBottom,
+        RightBottom
+    }
 }
